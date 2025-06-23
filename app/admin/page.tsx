@@ -222,21 +222,6 @@ export default function AdminPage() {
           >
             {selectedCat === i && (
               <div className="ml-2 mt-4">
-                {editProductIndex === null && (
-                  <ProductForm
-                    name={productName}
-                    setName={setProductName}
-                    icon={productIcon}
-                    setIcon={setProductIcon}
-                    desc={productDesc}
-                    setDesc={setProductDesc}
-                    fileInputRef={fileInputRef}
-                    uploading={uploading}
-                    onIconUpload={handleIconUpload}
-                    onSubmit={addProduct}
-                    submitLabel="Add Product"
-                  />
-                )}
                 <ProductList
                   products={cat.products}
                   catIndex={i}
@@ -256,6 +241,21 @@ export default function AdminPage() {
                   confirmAndDeleteProduct={confirmAndDeleteProduct}
                   reorderProducts={reorderProducts}
                 />
+                {editProductIndex === null && (
+                  <ProductForm
+                    name={productName}
+                    setName={setProductName}
+                    icon={productIcon}
+                    setIcon={setProductIcon}
+                    desc={productDesc}
+                    setDesc={setProductDesc}
+                    fileInputRef={fileInputRef}
+                    uploading={uploading}
+                    onIconUpload={handleIconUpload}
+                    onSubmit={addProduct}
+                    submitLabel="Add Product"
+                  />
+                )}
               </div>
             )}
           </CategoryRow>

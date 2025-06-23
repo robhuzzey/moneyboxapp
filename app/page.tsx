@@ -70,7 +70,7 @@ export default function ViewPage() {
         <div className="flex-1 flex justify-end">
           {leftCat && (
             <button
-              className="w-56 bg-white text-mb-accent rounded-2xl shadow-md border border-[#e6eaf0] flex items-center justify-center h-20 font-semibold text-lg transition hover:scale-105 hover:bg-[#eaf1f8]"
+              className="w-56 bg-white text-mb-primary rounded-2xl shadow-md border border-[#e6eaf0] flex items-center justify-center h-20 font-semibold text-lg transition hover:scale-105 hover:bg-[#eaf1f8]"
               onClick={handlePrev}
               aria-label={`Show ${leftCat.name}`}
               tabIndex={0}
@@ -93,7 +93,7 @@ export default function ViewPage() {
         <div className="flex-1 flex justify-start">
           {rightCat && (
             <button
-              className="w-56 bg-white text-mb-accent rounded-2xl shadow-md border border-[#e6eaf0] flex items-center justify-center h-20 font-semibold text-lg transition hover:scale-105 hover:bg-[#eaf1f8]"
+              className="w-56 bg-white text-mb-primary rounded-2xl shadow-md border border-[#e6eaf0] flex items-center justify-center h-20 font-semibold text-lg transition hover:scale-105 hover:bg-[#eaf1f8]"
               onClick={handleNext}
               aria-label={`Show ${rightCat.name}`}
               tabIndex={0}

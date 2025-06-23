@@ -36,7 +36,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
 }) => (
   <form
     onSubmit={onSubmit}
-    className="flex flex-col gap-6 mb-8 bg-white p-8 rounded-3xl shadow-xl border border-[#e6eaf0] font-sans max-w-xl mx-auto"
+    className="flex flex-col gap-6 mt-8 bg-white p-8 rounded-3xl shadow-xl border border-[#e6eaf0] font-sans"
     style={{
       background: "#fff",
       fontFamily: "'Inter', 'Segoe UI', Arial, sans-serif",
