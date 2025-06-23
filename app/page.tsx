@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import CategoryCarousel from "./components/CategoryCarousel";
 import CategoryCard from "./components/CategoryCard";
+import Image from "next/image";
 
 interface Product {
   name: string;
@@ -43,10 +44,18 @@ export default function ViewPage() {
   const rightCat = categories[centerIdx + 1];
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center py-8">
+    <div className="min-h-screen bg-[#f6fafd] flex flex-col items-center py-8">
       {/* Header */}
-      <header className="w-full bg-[#4a4a4a] text-white py-4 rounded-t-lg shadow text-center text-2xl font-bold tracking-wide">
-        Moneybox
+      <header className="w-full bg-white py-8 rounded-t-3xl shadow-lg border-b border-[#e6eaf0] mb-8 flex items-center justify-center">
+        <Image
+          src="/MBLogo.svg"
+          alt="Moneybox Logo"
+          width={120}
+          height={120}
+          priority
+          className="h-24 w-36 md:h-28 md:w-44"
+          style={{ objectFit: "contain" }}
+        />
       </header>
       {/* Explore Accounts */}
       <CategoryCarousel
@@ -61,7 +70,7 @@ export default function ViewPage() {
         <div className="flex-1 flex justify-end">
           {leftCat && (
             <button
-              className="w-64 bg-[#6c6c6c] text-white rounded-lg shadow border-2 border-[#444] flex items-center justify-center h-24 font-semibold text-lg transition focus:outline-none hover:scale-105"
+              className="w-56 bg-white text-mb-accent rounded-2xl shadow-md border border-[#e6eaf0] flex items-center justify-center h-20 font-semibold text-lg transition hover:scale-105 hover:bg-[#eaf1f8]"
               onClick={handlePrev}
               aria-label={`Show ${leftCat.name}`}
               tabIndex={0}
@@ -84,7 +93,7 @@ export default function ViewPage() {
         <div className="flex-1 flex justify-start">
           {rightCat && (
             <button
-              className="w-64 bg-[#6c6c6c] text-white rounded-lg shadow border-2 border-[#444] flex items-center justify-center h-24 font-semibold text-lg transition focus:outline-none hover:scale-105"
+              className="w-56 bg-white text-mb-accent rounded-2xl shadow-md border border-[#e6eaf0] flex items-center justify-center h-20 font-semibold text-lg transition hover:scale-105 hover:bg-[#eaf1f8]"
               onClick={handleNext}
               aria-label={`Show ${rightCat.name}`}
               tabIndex={0}

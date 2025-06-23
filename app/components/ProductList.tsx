@@ -47,7 +47,7 @@ const ProductList: React.FC<ProductListProps> = ({
     {products?.map((prod, j) => (
       <li
         key={j}
-        className="flex items-center gap-3 bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded px-3 py-2 shadow-sm"
+        className="flex items-center gap-3 bg-white border border-[#e6eaf0] rounded-xl px-4 py-3 shadow"
       >
         {editProductIndex === j ? (
           <ProductForm
@@ -67,21 +67,23 @@ const ProductList: React.FC<ProductListProps> = ({
           />
         ) : (
           <>
-            <span className="font-medium text-gray-900 dark:text-gray-100">
-              {prod.name}
-            </span>
+            <span className="font-semibold text-[#1e2a32]">{prod.name}</span>
             {prod.icon && (
-              <img src={prod.icon} alt="" className="w-8 h-8 rounded border" />
+              <img
+                src={prod.icon}
+                alt=""
+                className="w-8 h-8 rounded-full border-2 border-[#00b4a0]"
+              />
             )}
             <button
               onClick={() => startEditProduct(prod, j)}
-              className="text-blue-600 hover:underline text-xs"
+              className="text-[#00b4a0] hover:underline text-xs font-semibold"
             >
               Edit
             </button>
             <button
               onClick={() => confirmAndDeleteProduct(catIndex, j)}
-              className="text-red-600 hover:underline text-xs"
+              className="text-red-500 hover:underline text-xs font-semibold"
             >
               Delete
             </button>
@@ -91,8 +93,8 @@ const ProductList: React.FC<ProductListProps> = ({
                 onClick={() => reorderProducts(catIndex, j, j - 1)}
                 className={`p-1 rounded-full mb-1 transition-colors ${
                   j === 0
-                    ? "bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed"
-                    : "bg-blue-500 hover:bg-blue-600 text-white shadow"
+                    ? "bg-[#eaf1f8] text-[#b6c6d6] cursor-not-allowed"
+                    : "bg-[#00b4a0] hover:bg-[#009e8c] text-white shadow"
                 }`}
                 title="Move up"
               >
@@ -116,8 +118,8 @@ const ProductList: React.FC<ProductListProps> = ({
                 onClick={() => reorderProducts(catIndex, j, j + 1)}
                 className={`p-1 rounded-full mt-1 transition-colors ${
                   j === products.length - 1
-                    ? "bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed"
-                    : "bg-blue-500 hover:bg-blue-600 text-white shadow"
+                    ? "bg-[#eaf1f8] text-[#b6c6d6] cursor-not-allowed"
+                    : "bg-[#00b4a0] hover:bg-[#009e8c] text-white shadow"
                 }`}
                 title="Move down"
               >

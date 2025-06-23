@@ -183,8 +183,8 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6 mt-10 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 rounded-xl shadow-lg">
-      <h1 className="text-4xl font-extrabold mb-8 text-center text-blue-700 dark:text-blue-300 tracking-tight">
+    <div className="max-w-4xl mx-auto p-8 mt-12 bg-white rounded-3xl shadow-2xl border border-[#e6eaf0]">
+      <h1 className="text-4xl font-extrabold mb-8 text-center text-[#00b4a0] tracking-tight">
         Admin Panel
       </h1>
       <form
@@ -195,11 +195,11 @@ export default function AdminPage() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="New category name"
-          className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded px-4 py-2 flex-1 shadow-sm focus:ring-2 focus:ring-blue-400"
+          className="border border-[#e6eaf0] bg-[#f6fafd] text-[#1e2a32] rounded-full px-6 py-3 flex-1 shadow-sm focus:ring-2 focus:ring-[#00b4a0] focus:bg-white placeholder-[#b6c6d6] font-medium text-base transition"
         />
         <button
           type="submit"
-          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-semibold shadow"
+          className="bg-[#00b4a0] hover:bg-[#009e8c] text-white px-6 py-2 rounded-full font-semibold shadow"
         >
           Add Category
         </button>
