@@ -19,6 +19,11 @@ export default function ViewPage() {
   const [centerIdx, setCenterIdx] = useState(1); // default to 2nd category if exists
   const [openProductIdx, setOpenProductIdx] = useState<number | null>(null);
 
+  // Reset open product when category changes
+  useEffect(() => {
+    setOpenProductIdx(null);
+  }, [centerIdx]);
+
   useEffect(() => {
     fetch("/api/categories")
       .then((res) => res.json())
@@ -44,9 +49,9 @@ export default function ViewPage() {
   const rightCat = categories[centerIdx + 1];
 
   return (
-    <div className="min-h-screen bg-[#f6fafd] flex flex-col items-center py-8">
+    <div className="min-h-screen bg-[#f6fafd] flex flex-col items-center pb-8">
       {/* Header */}
-      <header className="w-full bg-white py-8 rounded-t-3xl shadow-lg border-b border-[#e6eaf0] mb-8 flex items-center justify-center">
+      <header className="w-full bg-white py-8 border-[#e6eaf0] mb-8 flex items-center justify-center">
         <Image
           src="/MBLogo.svg"
           alt="Moneybox Logo"

@@ -18,6 +18,7 @@ export default function AdminPage() {
   const [editProductIcon, setEditProductIcon] = useState("");
   const [editProductDesc, setEditProductDesc] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const editFileInputRef = useRef<HTMLInputElement>(null);
 
@@ -29,6 +30,11 @@ export default function AdminPage() {
 
   async function addCategory(e: React.FormEvent) {
     e.preventDefault();
+    if (!name.trim()) {
+      setError("Category name cannot be empty");
+      return;
+    }
+    setError("");
     await fetch("/api/categories", {
       method: "POST",
       body: JSON.stringify({ name, products: [] }),
@@ -204,6 +210,11 @@ export default function AdminPage() {
           Add Category
         </button>
       </form>
+      {error && (
+        <div role="alert" className="text-red-500">
+          {error}
+        </div>
+      )}
       <ul className="space-y-8">
         {categories.map((cat, i) => (
           <CategoryRow

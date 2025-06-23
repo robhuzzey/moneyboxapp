@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface ProductFormProps {
   name: string;
@@ -36,7 +37,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
 }) => (
   <form
     onSubmit={onSubmit}
-    className="flex flex-col gap-6 mt-8 bg-white p-8 rounded-3xl shadow-xl border border-[#e6eaf0] font-sans"
+    className="flex flex-col gap-6 mt-8 bg-white p-8 rounded-3xl shadow-xl border border-[#e6eaf0] font-sans w-full"
     style={{
       background: "#fff",
       fontFamily: "'Inter', 'Segoe UI', Arial, sans-serif",
@@ -80,9 +81,11 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 role="button"
                 aria-label="Change icon"
               >
-                <img
-                  src={icon || iconPreview}
+                <Image
+                  src={icon || iconPreview || ""}
                   alt="icon preview"
+                  width={64}
+                  height={64}
                   className="w-16 h-16 rounded-full border-2 border-[#00b4a0] bg-white shadow transition-shadow object-cover"
                   style={{
                     background: "#fff",
@@ -148,12 +151,15 @@ const ProductForm: React.FC<ProductFormProps> = ({
         <button
           type="button"
           onClick={onCancel}
-          className="bg-[#f6fafd] hover:bg-[#eaf1f8] text-[#1e2a32] px-8 py-3 rounded-full font-semibold shadow w-full sm:w-auto text-base border border-[#e6eaf0] transition"
+          className="bg-white hover:bg-[#f0f4f8] text-[#009e8c] px-8 py-3 rounded-full font-semibold shadow w-full sm:w-auto text-base border border-[#00b4a0] transition focus:outline-none focus:ring-2 focus:ring-[#00b4a0] focus:ring-offset-2"
           style={{
-            fontWeight: 600,
+            fontWeight: 700,
             letterSpacing: "0.01em",
-            background: "#f6fafd",
-            borderColor: "#e6eaf0",
+            background: "#fff",
+            borderColor: "#00b4a0",
+            color: "#009e8c",
+            boxShadow: "0 2px 8px 0 rgba(0,180,160,0.08)",
+            minWidth: 140,
           }}
         >
           Cancel

@@ -22,7 +22,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
   setOpenProductIdx,
 }) => (
   <div
-    className="bg-white text-[#1e2a32] rounded-3xl shadow-xl border border-[#e6eaf0] px-8 py-6 flex flex-col items-center cursor-pointer hover:scale-[1.02] transition"
+    className="bg-white text-[#1e2a32] rounded-3xl shadow-xl border border-[#e6eaf0] px-8 py-6 flex flex-col items-center cursor-pointer hover:scale-[1.02] transition w-full max-w-md min-w-[320px]"
     onClick={() => setOpenProductIdx(null)}
     tabIndex={0}
     aria-label={`Open ${category.name}`}
@@ -44,12 +44,12 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
             aria-expanded={openProductIdx === idx}
           >
             <span>{prod.name}</span>
-            <span className="ml-2">
+            <span className="ml-2 flex items-center justify-center w-8 h-8">
               {openProductIdx === idx ? (
                 <svg
                   className="w-5 h-5"
                   fill="none"
-                  stroke="#00b4a0"
+                  stroke="#222"
                   strokeWidth={2}
                   viewBox="0 0 24 24"
                 >
@@ -63,7 +63,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
                 <svg
                   className="w-5 h-5"
                   fill="none"
-                  stroke="#00b4a0"
+                  stroke="#222"
                   strokeWidth={2}
                   viewBox="0 0 24 24"
                 >
@@ -76,8 +76,14 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
               )}
             </span>
           </button>
-          {openProductIdx === idx && (
-            <div className="flex gap-4 bg-[#eaf1f8] border border-[#b6c6d6] rounded-xl px-5 py-5 mt-2 shadow-inner animate-fade-in">
+          <div
+            className={`transition-[max-height,opacity] duration-300 ease-in-out overflow-hidden ${
+              openProductIdx === idx
+                ? "max-h-[1000px] opacity-100"
+                : "max-h-0 opacity-0"
+            }`}
+          >
+            <div className="flex gap-8 bg-[#eaf1f8] border border-[#b6c6d6] rounded-xl px-10 py-7 mt-3 shadow-inner items-center justify-center">
               <div className="flex flex-col items-center min-w-[80px]">
                 <img
                   src={prod.icon}
@@ -86,7 +92,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
                 />
               </div>
               <div className="flex-1">
-                <div className="bg-white rounded-xl p-4 text-[#1e2a32] min-h-[64px]">
+                <div className="bg-white rounded-xl p-6 text-[#1e2a32] min-h-[64px]">
                   <div
                     className="prose prose-sm max-w-none"
                     dangerouslySetInnerHTML={{
@@ -96,7 +102,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
                 </div>
               </div>
             </div>
-          )}
+          </div>
         </div>
       ))}
     </div>

@@ -1,8 +1,15 @@
 import React from "react";
+import Image from "next/image";
 import ProductForm from "./ProductForm";
 
+interface Product {
+  name: string;
+  icon: string;
+  description: string;
+}
+
 interface ProductListProps {
-  products: any[];
+  products: Product[];
   catIndex: number;
   editProductIndex: number | null;
   editProductName: string;
@@ -18,7 +25,7 @@ interface ProductListProps {
     setIcon: (url: string) => void
   ) => void;
   saveEditProduct: (e: React.FormEvent, catIdx: number) => void;
-  startEditProduct: (prod: any, idx: number) => void;
+  startEditProduct: (prod: Product, idx: number) => void;
   setEditProductIndex: (v: number | null) => void;
   confirmAndDeleteProduct: (catIdx: number, prodIdx: number) => void;
   reorderProducts: (catIdx: number, from: number, to: number) => void;
@@ -47,7 +54,7 @@ const ProductList: React.FC<ProductListProps> = ({
     {products?.map((prod, j) => (
       <li
         key={j}
-        className="flex items-center gap-3 bg-white border border-[#e6eaf0] rounded-xl px-4 py-3 shadow"
+        className="flex items-center justify-between gap-3 bg-white border border-[#e6eaf0] rounded-xl px-4 py-3 shadow"
       >
         {editProductIndex === j ? (
           <ProductForm
@@ -67,27 +74,41 @@ const ProductList: React.FC<ProductListProps> = ({
           />
         ) : (
           <>
-            <span className="font-semibold text-[#1e2a32]">{prod.name}</span>
-            {prod.icon && (
-              <img
-                src={prod.icon}
-                alt=""
-                className="w-8 h-8 rounded-full border-2 border-[#00b4a0]"
-              />
-            )}
-            <button
-              onClick={() => startEditProduct(prod, j)}
-              className="text-[#00b4a0] hover:underline text-xs font-semibold"
-            >
-              Edit
-            </button>
-            <button
-              onClick={() => confirmAndDeleteProduct(catIndex, j)}
-              className="text-red-500 hover:underline text-xs font-semibold"
-            >
-              Delete
-            </button>
-            <div className="flex flex-col items-center ml-2">
+            <div className="flex items-center gap-3 flex-1 min-w-0">
+              <span className="font-semibold text-[#1e2a32] truncate">
+                {prod.name}
+              </span>
+              {prod.description && (
+                <span
+                  className="text-xs text-gray-500 ml-2 truncate"
+                  data-testid="product-desc"
+                >
+                  {prod.description}
+                </span>
+              )}
+              {prod.icon && (
+                <Image
+                  src={prod.icon}
+                  alt=""
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 rounded-full border-2 border-[#00b4a0] object-contain"
+                />
+              )}
+              <button
+                onClick={() => startEditProduct(prod, j)}
+                className="text-[#00b4a0] hover:underline text-xs font-semibold"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => confirmAndDeleteProduct(catIndex, j)}
+                className="text-red-500 hover:underline text-xs font-semibold"
+              >
+                Delete
+              </button>
+            </div>
+            <div className="flex flex-col items-center ml-2 flex-shrink-0">
               <button
                 disabled={j === 0}
                 onClick={() => reorderProducts(catIndex, j, j - 1)}
