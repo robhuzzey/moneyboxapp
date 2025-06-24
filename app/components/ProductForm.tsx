@@ -37,7 +37,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
 }) => (
   <form
     onSubmit={onSubmit}
-    className="flex flex-col gap-6 mt-8 bg-white p-8 rounded-3xl shadow-xl border border-[#e6eaf0] font-sans w-full"
+    className="flex flex-col gap-4 sm:gap-6 mt-6 sm:mt-8 bg-white p-4 sm:p-8 rounded-3xl shadow-xl border border-[#e6eaf0] font-sans w-full"
     style={{
       background: "#fff",
       fontFamily: "'Inter', 'Segoe UI', Arial, sans-serif",
@@ -46,7 +46,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
     }}
   >
     <div className="w-full">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         <div className="flex flex-col gap-2">
           <label className="font-semibold text-[#1e2a32] text-base mb-1 tracking-tight">
             Product Name
@@ -55,7 +55,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Product name"
-            className="border border-[#e6eaf0] bg-white text-[#1e2a32] rounded-lg px-5 py-3 text-base font-medium focus:border-[#00b4a0] focus:ring-2 focus:ring-[#00b4a0] transition placeholder-[#b6c6d6]"
+            className="border border-[#e6eaf0] bg-white text-[#1e2a32] rounded-lg px-4 sm:px-5 py-2 sm:py-3 text-base font-medium focus:border-[#00b4a0] focus:ring-2 focus:ring-[#00b4a0] transition placeholder-[#b6c6d6]"
             style={{
               background: "#fff",
               color: "#1e2a32",
@@ -65,7 +65,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
           />
         </div>
         <div className="flex flex-col gap-2 justify-end">
-          <div className="flex items-end h-full mt-[2.1rem]">
+          <div className="flex items-end h-full mt-[1.2rem] sm:mt-[2.1rem]">
             <input
               type="file"
               accept="image/*"
@@ -84,9 +84,9 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 <Image
                   src={icon || iconPreview || ""}
                   alt="icon preview"
-                  width={64}
-                  height={64}
-                  className="w-16 h-16 rounded-full border-2 border-[#00b4a0] bg-white shadow transition-shadow object-cover"
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-[#00b4a0] bg-white shadow transition-shadow object-cover"
                   style={{
                     background: "#fff",
                     boxShadow: "0 2px 8px 0 rgba(0,180,160,0.10)",
@@ -102,7 +102,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="bg-[#00b4a0] hover:bg-[#009e8c] text-white font-semibold px-5 py-2 rounded-full shadow text-sm transition-colors border-2 border-[#00b4a0]"
+                className="bg-[#00b4a0] hover:bg-[#009e8c] text-white font-semibold px-4 sm:px-5 py-2 rounded-full shadow text-sm transition-colors border-2 border-[#00b4a0]"
                 disabled={uploading}
                 style={{
                   fontWeight: 600,
@@ -124,7 +124,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
       <textarea
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
-        className="border border-[#e6eaf0] bg-white text-[#1e2a32] rounded-lg px-5 py-3 text-base font-medium focus:border-[#00b4a0] focus:ring-2 focus:ring-[#00b4a0] transition min-h-[90px] placeholder-[#b6c6d6]"
+        className="border border-[#e6eaf0] bg-white text-[#1e2a32] rounded-lg px-4 sm:px-5 py-2 sm:py-3 text-base font-medium focus:border-[#00b4a0] focus:ring-2 focus:ring-[#00b4a0] transition min-h-[70px] sm:min-h-[90px] placeholder-[#b6c6d6]"
         placeholder="Enter product description (Markdown or HTML supported)"
         style={{
           background: "#fff",
@@ -134,12 +134,12 @@ const ProductForm: React.FC<ProductFormProps> = ({
         }}
       />
     </div>
-    <div className="flex gap-3 items-end mt-2">
+    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 items-end mt-2">
       <button
         type="submit"
-        className="bg-[#00b4a0] hover:bg-[#009e8c] text-white px-8 py-3 rounded-full font-semibold shadow w-full sm:w-auto text-base transition"
+        className="bg-[#00b4a0] hover:bg-[#009e8c] text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold shadow w-full sm:w-auto text-base transition"
         style={{
-          minWidth: 140,
+          minWidth: 120,
           fontWeight: 700,
           letterSpacing: "0.01em",
           boxShadow: "0 2px 8px 0 rgba(0,180,160,0.10)",
@@ -151,7 +151,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
         <button
           type="button"
           onClick={onCancel}
-          className="bg-white hover:bg-[#f0f4f8] text-[#009e8c] px-8 py-3 rounded-full font-semibold shadow w-full sm:w-auto text-base border border-[#00b4a0] transition focus:outline-none focus:ring-2 focus:ring-[#00b4a0] focus:ring-offset-2"
+          className="bg-white hover:bg-[#f0f4f8] text-[#009e8c] px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold shadow w-full sm:w-auto text-base border border-[#00b4a0] transition focus:outline-none focus:ring-2 focus:ring-[#00b4a0] focus:ring-offset-2"
           style={{
             fontWeight: 700,
             letterSpacing: "0.01em",
@@ -159,7 +159,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             borderColor: "#00b4a0",
             color: "#009e8c",
             boxShadow: "0 2px 8px 0 rgba(0,180,160,0.08)",
-            minWidth: 140,
+            minWidth: 120,
           }}
         >
           Cancel
